@@ -1,0 +1,17 @@
+// src/api.js
+import axios from "axios";
+
+const API_URL = "https://api.freeapi.app/api/v1/public/meals";
+
+export const fetchMeals = async (page = 1) => {
+  try {
+    const res = await axios.get(`${API_URL}?page=${page}`);
+
+    console.log("MEALS API:", res.data);
+
+    return res.data?.data || {};
+  } catch (error) {
+    console.error(error);
+    return {};
+  }
+};
